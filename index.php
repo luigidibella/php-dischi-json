@@ -69,7 +69,7 @@
 
         <div class="row row-cols-3 py-3">
           <div 
-            v-for="(item, index) in list" 
+            v-for="(item, index) in list"
             :key="index"
             class="col d-flex justify-content-center mb-3"
           >
@@ -78,11 +78,26 @@
               <div class="card-body text-center">
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">{{ item.author}}</p>
-                <div class="d-flex justify-content-around align-items-center">
-                  <h5>{{ item.year }}</h5>
-  
+                <h5>{{ item.year }}</h5>
+                <div class="d-flex justify-content-around">
+                  <a 
+                    @click="toggleLike(index)"
+                    class="btn btn-success"
+                    :class="{'like': item.like}"                  >
+                    <i 
+                      class="fa-regular fa-heart"
+                      :class="{'fa-solid': item.like}"
+                    >
+                      <!-- <i class="fa-solid fa-heart"></i> -->
+                    </i>
+                  </a>
+
                   <a :href="`card_detail.php?index=${index}`" class="btn btn-warning">
                     <i class="fa-regular fa-eye"></i>
+                  </a>
+
+                  <a class="btn btn-danger">
+                    <i class="fa-solid fa-ban"></i>
                   </a>
                 </div>
               </div>

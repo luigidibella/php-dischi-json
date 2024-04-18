@@ -35,11 +35,24 @@ createApp({
       data.append('newCardGenre', this.newCard.genre);
 
       axios.post(this.apiUrl, data)
-      .then(result =>{
-        this.list = result.data;
-        /* console.log(result.data); */
-      })
+        .then(result =>{
+          this.list = result.data;
+          /* console.log(result.data); */
+        })
       
+    },
+    toggleLike(index){
+
+      console.log(index);
+
+      const data = new FormData();
+      data.append('indexToLike', index);
+
+      axios.post(this.apiUrl, data)
+        .then(result => {
+          this.list = result.data
+        })
+
     }
   },
 
