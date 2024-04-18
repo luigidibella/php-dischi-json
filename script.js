@@ -60,15 +60,18 @@ createApp({
 
     },
     removeCard(index){
-      console.log(index);
+      /* console.log(index); */
+      const cardToDelete = this.list[index];
 
-      const data = new FormData();
-      data.append('indexToDelete', index);
-
-      axios.post(this.apiUrl, data)
-        .then(result => {
-          this.list = result.data
-        })
+      if(confirm(`Sei sicuro di voler eliminare l'album ${cardToDelete.title}?`)){
+        const data = new FormData();
+        data.append('indexToDelete', index);
+  
+        axios.post(this.apiUrl, data)
+          .then(result => {
+            this.list = result.data
+          })
+      }
 
     }
   },
