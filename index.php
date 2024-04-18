@@ -29,11 +29,49 @@
 
       <div class="container my-5 py-5">
 
+        <div class="input-group my-3">
+          <input 
+            v-model.trim="newCard.title"
+            class="form-control" 
+            placeholder="title"
+            type="text" 
+          >
+          <input
+            v-model.trim="newCard.author" 
+            class="form-control" 
+            placeholder="author"
+            type="text" 
+          >
+          <input
+            v-model.trim="newCard.year" 
+            class="form-control" 
+            placeholder="year"
+            type="text" 
+          >
+          <input
+            v-model.trim="newCard.poster" 
+            class="form-control" 
+            placeholder="poster"
+            type="text" 
+          >
+          <input
+            v-model.trim="newCard.genre" 
+            class="form-control" 
+            placeholder="genre"
+            type="text" 
+          >
+          <button 
+            @click.stop="addNewCard"
+            class="btn btn-warning" 
+            type="button"
+          >Invia</button>
+        </div>
+
         <div class="row row-cols-3 py-3">
           <div 
             v-for="(item, index) in list" 
             :key="index"
-            class="col mb-3"
+            class="col d-flex justify-content-center mb-3"
           >
             <div class="card my_card py-3" style="width: 18rem;">
               <img :src="item.poster" class="card-img-top px-5" :alt="`photo-${index}`">
