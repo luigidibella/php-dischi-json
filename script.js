@@ -38,15 +38,32 @@ createApp({
         .then(result =>{
           this.list = result.data;
           /* console.log(result.data); */
+          this.newCard.title = '';
+          this.newCard.author = '';
+          this.newCard.years = '';
+          this.newCard.poster = '';
+          this.newCard.genre = '';
         })
       
     },
     toggleLike(index){
 
-      console.log(index);
+      /* console.log(index); */
 
       const data = new FormData();
       data.append('indexToLike', index);
+
+      axios.post(this.apiUrl, data)
+        .then(result => {
+          this.list = result.data
+        })
+
+    },
+    removeCard(index){
+      console.log(index);
+
+      const data = new FormData();
+      data.append('indexToDelete', index);
 
       axios.post(this.apiUrl, data)
         .then(result => {

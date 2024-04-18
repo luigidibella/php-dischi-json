@@ -96,7 +96,10 @@
                     <i class="fa-regular fa-eye"></i>
                   </a>
 
-                  <a class="btn btn-danger">
+                  <a 
+                    @click="removeCard(index)"
+                    class="btn btn-danger"
+                  >
                     <i class="fa-solid fa-ban"></i>
                   </a>
                 </div>

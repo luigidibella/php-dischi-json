@@ -25,6 +25,12 @@ if(isset($_POST['indexToLike'])){
   file_put_contents('dischi.json', json_encode($list));
 }
 
+if(isset($_POST['indexToDelete'])){
+  $indexToDelete = $_POST['indexToDelete'];
+  array_splice($list,$indexToDelete,1);
+  file_put_contents('dischi.json', json_encode($list));
+}
+
 header('Content-Type: application/json');
 
 echo json_encode($list);
