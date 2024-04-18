@@ -1,3 +1,13 @@
+<?php
+
+$json_string = file_get_contents('dischi.json');
+
+$list = json_decode($json_string, true);
+
+$card = $list[$_GET['index']];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,29 +34,23 @@
       <nav class="navbar my_navbar fixed-top">
         <div class="container-fluid mx-5">
           <img src="spotify-logo-png.png" class="logo" alt="">
+          <a href="./" class="btn btn-warning">
+            <i class="fa-solid fa-left-long"></i>
+          </a>
         </div>
       </nav>
 
       <div class="container my-5 py-5">
 
-        <div class="row row-cols-3 py-3">
-          <div 
-            v-for="(item, index) in list" 
-            :key="index"
-            class="col mb-3"
-          >
+        <div class="row d-flex justify-content-center py-3">
+          <div class="col d-flex justify-content-center mb-3">
             <div class="card my_card py-3" style="width: 18rem;">
-              <img :src="item.poster" class="card-img-top px-5" :alt="`photo-${index}`">
+              <img src="<?php echo $card['poster'] ?>" class="card-img-top px-5" alt="poster">
               <div class="card-body text-center">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <p class="card-text">{{ item.author}}</p>
-                <div class="d-flex justify-content-around align-items-center">
-                  <h5>{{ item.year }}</h5>
-  
-                  <a :href="`card_detail.php?index=${index}`" class="btn btn-warning">
-                    <i class="fa-regular fa-eye"></i>
-                  </a>
-                </div>
+                <h5 class="card-title"><?php echo $card['title'] ?></h5>
+                <p class="card-text"><?php echo $card['author'] ?></p>
+                <h5><?php echo $card['year'] ?></h5>
+                <h3 class="text-warning"><?php echo $card['genre'] ?></h3>
               </div>
             </div>
           </div>
